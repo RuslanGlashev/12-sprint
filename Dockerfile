@@ -1,11 +1,11 @@
 FROM golang
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY . .
 
 RUN go mod tidy
 
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /my_app
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /main main.go
 
-CMD [ "/my_app" ]
+CMD ["/main"]
